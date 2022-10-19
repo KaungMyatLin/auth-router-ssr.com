@@ -1,0 +1,49 @@
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+@supports (display: flex)  {
+    .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.boxContainer {
+    width: 100%;
+    height: 30rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    padding: 0 0;
+}
+@media (min-width: 426px) {
+    .boxContainer {
+        width: 28rem;
+        height: 31.25rem;
+        border: 0.1rem solid rgba(128, 128, 128, 0.595);
+        padding: 2rem 3.2rem;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+}
+@media (min-width: 769px) {
+}
+.Container {
+    display: inline;
+}
+.brandContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+.brand {
+    height: 2rem;
+    font-size: 2rem;
+}

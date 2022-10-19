@@ -16,7 +16,7 @@ const TopNavigation = () => {
                         <>
                             <li>
                                 <Link href='/login'>Login</Link>
-                            </li> 
+                            </li>
                             <li>
                                 <Link href='/signup'>Signup</Link>
                             </li>
