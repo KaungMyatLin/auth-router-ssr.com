@@ -34,16 +34,26 @@
 }
 @media (min-width: 769px) {
 }
-.Container {
-    display: inline;
-}
-.brandContainer {
+.centeringContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
+}
+.Container {
+    height: 2rem;
 }
 .brand {
-    height: 2rem;
     font-size: 2rem;
+    display: inline;
+    width: 2rem;
+    color: #ffac40;
 }
+.marginBtmSeparator {
+    margin-bottom: 1rem;
+}
+.featureName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;    /* to make it look like system font */
+}
+/* style={{marginTop:0}} */
