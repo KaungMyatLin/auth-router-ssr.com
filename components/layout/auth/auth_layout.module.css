@@ -16,6 +16,7 @@
     background-color: white;
     border-radius: 0.3rem;
     padding: 0 0;
+    margin-top: 3rem;
 }
 @media (min-width: 426px) {
     .boxContainer {
@@ -23,6 +24,7 @@
         height: 31.25rem;
         border: 0.1rem solid rgba(128, 128, 128, 0.595);
         padding: 2rem 3.2rem;
+        margin: 8.3rem auto 0;
     }
 }
 @media (min-width: 426px) and (max-width: 768px) {
@@ -45,6 +47,13 @@
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Lato', sans-serif;    /* to make it look like system font */
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    .formContainer {
+
+    }
+}
+@media (min-width: 769px) {
 }
 .fieldContainer label,
 .fieldContainer input {
