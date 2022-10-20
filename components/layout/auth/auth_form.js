@@ -39,7 +39,6 @@ const AuthLayout = (props) => {
             }
         }
     })
-    console.log('formik', formik)
     const forgotEmHdl = () => {
         // router.push('/forgot_email')
     }

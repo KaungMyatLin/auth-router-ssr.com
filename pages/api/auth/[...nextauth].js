@@ -1,6 +1,7 @@
 import { pwCanbeSameHash } from "@lib/shared/auth";
 import getConnStrToMongoClient from "@lib/shared/db"
 import NextAuth from "next-auth/next";
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 export const authOptions = {
     session: {
