@@ -23,7 +23,7 @@
         width: 28rem;
         height: 31.25rem;
         border: 0.1rem solid rgba(128, 128, 128, 0.595);
-        padding: 2rem 3.2rem;
+        padding: 3rem 2.5rem;
         margin: 8.3rem auto 0;
     }
 }
@@ -35,33 +35,85 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .brand {
     color: #ffac40;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
-.containerSeparator {
-    margin-bottom: 1rem;
+.twoDotThreeRemSeparator {
+    margin-bottom: 2.3rem !important;
+}
+.aRemSeparator {
+    margin-bottom: 1rem !important;
+}
+.dotFiveRemSeparator {
+    margin-bottom: 0.5rem !important;
+}
+.titleContainer {
+    height: calc(2.25rem + 0.5rem + 1.18rem);
 }
 .featureName {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     font-family: 'Lato', sans-serif;    /* to make it look like system font */
 }
+.formContainer {
+    height: 100%;
+}
 @media (min-width: 426px) and (max-width: 768px) {
-    .formContainer {
-
-    }
 }
 @media (min-width: 769px) {
+}
+.fieldContainer {
+    margin: 0 auto;
+    width: calc(100% - 26px);
 }
 .fieldContainer label,
 .fieldContainer input {
     display: block;
-    margin: 0 auto;
-    width: 90%;
+    width: 100%;
 }
-.formfieldSeparator {
-    margin-bottom: 0.5rem !important;
+.fieldContainer label {
+    font-size: 1.2rem;
 }
+.fieldContainer input {
+    border-radius: 3px;
+    font-size: 1.6rem;
+    border: 1px solid rgba(128, 128, 128, 0.595);
+    padding: 4px 8px;
+}
+
+/* button */
+.spaBtns {
+    border: none;
+    background-color: transparent;
+    color: rgb(55, 55, 255);
+}
+.allBtns {
+    font-weight: bold;
+}
+.formMainBtn {
+    border-radius: 4px;
+    color: white;
+    background-color: rgb(55, 55, 255);
+    font-size: 0.9;
+    padding: 0;
+    width: 4.1rem;
+    height: 2.2rem;
+}
+.forgotPwBtn {
+    display: block;
+    height: 1rem;
+}
+.auth_switchBtn {
+    height: 1rem;
+}
+.btnsSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+}
+/* button ends here*/
+
+
 /* className={`${classes.formContainer}`} */
