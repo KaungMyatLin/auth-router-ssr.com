@@ -2,22 +2,17 @@
     width: 100%;
     height: 100%;
 }
-
 @supports (display: flex)  {
     .section {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         padding: 0 0;
-        width: 100%;
-        height: 100%;
+        height: 80%;
     }
 }
-
 .boxContainer {
     width: 100%;
-    height: 30rem;
+    height: 95%;
     background-color: white;
     border-radius: 0.3rem;
     padding: 0 0;
@@ -39,16 +34,11 @@
     justify-content: center;
     align-items: center;
 }
-.Container {
-    height: 2rem;
-}
 .brand {
-    font-size: 2rem;
-    display: inline;
-    width: 2rem;
     color: #ffac40;
+    font-size: 2rem;
 }
-.marginBtmSeparator {
+.containerSeparator {
     margin-bottom: 1rem;
 }
 .featureName {
@@ -56,4 +46,13 @@
     font-weight: bold;
     font-family: 'Lato', sans-serif;    /* to make it look like system font */
 }
-/* style={{marginTop:0}} */
+.fieldContainer label,
+.fieldContainer input {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+}
+.formfieldSeparator {
+    margin-bottom: 0.5rem !important;
+}
+/* className={`${classes.formContainer}`} */
