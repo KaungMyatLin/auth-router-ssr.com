@@ -59,7 +59,7 @@ const AuthLayout = (props) => {
                     </div>
                     <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
                         <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
-                        { isLogin?  'SignUp' : ''}
+                        { isLogin?  'Login' : 'SignUp'}
                         </div>
                         <div style={{fontSize: '1rem', color:'#ababab'}}>
                         { isLogin?  'To continue to the shopping cart.' : ''}

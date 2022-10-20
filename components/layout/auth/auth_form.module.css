@@ -33,9 +33,9 @@
 }
 .centeringContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 .brand {
     color: #ffac40;
@@ -58,6 +58,8 @@
     font-weight: 600;
     font-family: 'Lato', sans-serif;    /* to make it look like system font */
     height: 2.3rem;
+    text-align: center;
+    min-width: 120px;
 }
 .formContainer {
     height: 100%;
