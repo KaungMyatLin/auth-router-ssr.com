@@ -2,24 +2,44 @@ import classes from './auth_form.module.css'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useFormik } from 'formik'
+import { schemaValidation } from '@lib/shared/validation'
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
     const emInpRef = useRef()
     const pwInpRef = useRef()
     const router = useRouter();
-    const authFormSubmitHdl = (e) => {
-        e.preventDefault()
-        const entEm = emInpRef.current.value
-        const pwEm = pwInpRef.current.value
-
-        if (isLogin) {
-            // send api.
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
         }
-        else {
-            
-        }
+        , validationSchema: schemaValidation
+        , onSubmit: async(val) => {
+            const entEm = emInpRef.current.value
+            const pwEm = pwInpRef.current.value
 
-    }
+            if (isLogin) {
+                const result = await signIn('credentials', {
+                    redirect: false
+                    , email: entEm
+                    , password: entPw
+                })
+                if (!result.error) {
+                    router.replace("/profile");
+                }
+            }
+            else {
+                try {
+                    const result_cUser = await createUser(entEm, entPw)
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            }
+        }
+    })
+    console.log('formik', formik)
     const forgotEmHdl = () => {
         // router.push('/forgot_email')
     }
@@ -45,14 +65,18 @@ const AuthLayout = (props) => {
                         { isLogin?  'To continue to the shopping cart.' : ''}
                         </div>
                     </div>
-                    <form onSubmit={authFormSubmitHdl} className={classes.formContainer} >
+                    <form className={classes.formContainer} >
                         <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                             <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                            <input type='email' id='email' required ref={emInpRef}/>
+                            <input type='email' id='email' name='email' required ref={emInpRef}
+                            onChange={formik.handleChange}
+                            value={formik.values.email} />
                         </div>
                         <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
                             <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                            <input type='password' id='password' required ref={pwInpRef}/>
+                            <input type='password' id='password' name='password' required ref={pwInpRef}
+                            onChange={formik.handleChange}
+                            value={formik.values.password} />
                         </div>
                         <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                             <button type='button' 
