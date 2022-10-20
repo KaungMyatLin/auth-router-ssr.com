@@ -1,12 +1,25 @@
-import { useState } from 'react'
-import AuthLayout from '@cmpnt/layout/auth/auth_layout'
+import { useEffect, useState } from 'react'
+import AuthLayout from '@cmpnt/layout/auth/auth_form'
 import { useRouter } from 'next/router';
+import { getSession } from 'next-auth/react';
 
 const login = () => {
     const [isLoading, setIsLoading ] = useState(true)
     const router = useRouter();
+    
+    useEffect(() => {
+        getSession().then(sessionObj => {
+            if (sessionObj) {
+                router.replace('/')
+            }
+            else {
+                setIsLoading(false)
+            }
+        })
+    }, [])
+
     return (
-        <AuthLayout />
+        <AuthLayout authType={true} />
     )
 }
 export default login

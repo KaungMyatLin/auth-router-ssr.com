@@ -1,4 +1,4 @@
-import classes from './auth_layout.module.css'
+import classes from './auth_form.module.css'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -6,11 +6,21 @@ const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
     const emInpRef = useRef()
     const pwInpRef = useRef()
-    const authFormSubmitHdl = () => {
-        
+    const router = useRouter();
+    const authFormSubmitHdl = (e) => {
+        e.preventDefault()
+        const entEm = emInpRef.current.value
+        const pwEm = pwInpRef.current.value
+
+        if (isLogin) {
+            // send api.
+        }
+        else {
+            
+        }
+
     }
     const forgotEmHdl = () => {
-        const router = useRouter();
         // router.push('/forgot_email')
     }
     const switchAuthModeHdl = () => {
@@ -29,10 +39,10 @@ const AuthLayout = (props) => {
                     </div>
                     <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
                         <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
-                            Login
+                        { isLogin?  'SignUp' : ''}
                         </div>
                         <div style={{fontSize: '1rem', color:'#ababab'}}>
-                        { true?  'To continue to the shopping cart.' : ''}
+                        { isLogin?  'To continue to the shopping cart.' : ''}
                         </div>
                     </div>
                     <form onSubmit={authFormSubmitHdl} className={classes.formContainer} >
