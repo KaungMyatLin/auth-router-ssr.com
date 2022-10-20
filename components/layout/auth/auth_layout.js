@@ -20,15 +20,15 @@ const AuthLayout = (props) => {
         <main className={classes.main}>
             <section className={classes.section}>
                 <div className={classes.boxContainer}>
-                    <div className={`${classes.centeringContainer} ${classes.aRemSeparator}`}>
+                    <div className={`${classes.centeringContainer} ${classes.sixteenpxSpacing}`}>
                         <Link href='/' >
                             <a>
                                 <div className={classes.brand}>Amazing</div>
                             </a>
                         </Link>
                     </div>
-                    <div className={` ${classes.centeringContainer} ${classes.aRemSeparator} ${classes.titleContainer} `}>
-                        <div className={` ${classes.dotFiveRemSeparator} ${classes.featureName} `}>
+                    <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
+                        <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
                             Login
                         </div>
                         <div style={{fontSize: '1rem', color:'#ababab'}}>
@@ -36,17 +36,17 @@ const AuthLayout = (props) => {
                         </div>
                     </div>
                     <form onSubmit={authFormSubmitHdl} className={classes.formContainer} >
-                        <div className={`${classes.aRemSeparator} ${classes.fieldContainer}`} >
-                            <label htmlFor='email' className={`${classes.dotFiveRemSeparator}`}>Your Email</label>
+                        <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
+                            <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
                             <input type='email' id='email' required ref={emInpRef}/>
                         </div>
-                        <div className={`${classes.aRemSeparator}  ${classes.fieldContainer}`} >
-                            <label htmlFor='password' className={`${classes.dotFiveRemSeparator}`}>Your Password</label>
+                        <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
+                            <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
                             <input type='password' id='password' required ref={pwInpRef}/>
                         </div>
-                        <div className={`${classes.aRemSeparator} ${classes.fieldContainer}`} >
+                        <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                             <button type='button' 
-                            className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.twoDotThreeRemSeparator}`} 
+                            className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
                             onClick={forgotEmHdl}>
                                 Forgot email?
                             </button>
