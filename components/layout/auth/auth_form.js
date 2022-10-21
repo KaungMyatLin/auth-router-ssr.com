@@ -17,7 +17,7 @@ const AuthLayout = (props) => {
         , validationSchema: schemaValidation
         , onSubmit: async(val) => {
             const entEm = emInpRef.current.value
-            const pwEm = pwInpRef.current.value
+            const entPw = pwInpRef.current.value
 
             if (isLogin) {
                 const result = await signIn('credentials', {
@@ -56,6 +56,7 @@ const AuthLayout = (props) => {
                             </a>
                         </Link>
                     </div>
+                    {console.log('auth_form line 59, formik: ', formik)}
                     <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
                         <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
                         { isLogin?  'Login' : 'SignUp'}
@@ -69,13 +70,21 @@ const AuthLayout = (props) => {
                             <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
                             <input type='email' id='email' name='email' required ref={emInpRef}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             value={formik.values.email} />
+                            { formik.touched.email && formik.errors.email? (
+                                <div className='error'>{formik.errors.email}</div>
+                            ): null}
                         </div>
                         <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
                             <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
                             <input type='password' id='password' name='password' required ref={pwInpRef}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             value={formik.values.password} />
+                            { formik.touched.password && formik.errors.password? (
+                                <div className='error'>{formik.errors.password}</div>
+                            ): null}
                         </div>
                         <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                             <button type='button' 
