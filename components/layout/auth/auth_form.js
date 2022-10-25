@@ -2,7 +2,7 @@ import classes from './auth_form.module.css'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
 import { schemaValidation } from '@lib/shared/validation'
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
@@ -69,19 +69,20 @@ const AuthLayout = (props) => {
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                                <input type='email' id='email' name='email' required ref={emInpRef}
+                                <Field type='email' id='email' name='email' required ref={emInpRef}
                                 // onChange={formik.handleChange}
                                 // onBlur={formik.handleBlur}
                                 // value={formik.values.email}
-                                { ...formik.getFieldProps('email')} />
+                                // { ...formik.getFieldProps('email')} 
+                                />
                                 { formik.touched.email && formik.errors.email? (
                                     <div className='error'>{formik.errors.email}</div>
                                 ): null}
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                <input type='password' id='password' name='password' required ref={pwInpRef}
-                                { ...formik.getFieldProps('password')}  />
+                                <Field type='password' id='password' name='password' required ref={pwInpRef}
+                                />
                                 { formik.touched.password && formik.errors.password? (
                                     <div className='error'>{formik.errors.password}</div>
                                 ): null}

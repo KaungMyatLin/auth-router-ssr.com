@@ -6,7 +6,7 @@ import { getSession } from 'next-auth/react';
 const login = () => {
     const [isLoading, setIsLoading ] = useState(true)
     const router = useRouter();
-    
+
     useEffect(() => {
         getSession().then(sessionObj => {
             if (sessionObj) {
@@ -17,6 +17,10 @@ const login = () => {
             }
         })
     }, [])
+
+    if ( isLoading ) {
+        return <p style={{margin: '0 auto'}}>Loading ...</p>
+    }
 
     return (
         <AuthLayout authType={true} />
