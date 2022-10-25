@@ -2,7 +2,7 @@ import classes from './auth_form.module.css'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Formik, Field } from 'formik'
+import { Formik, Field, ErrorMessage } from 'formik'
 import { schemaValidation } from '@lib/shared/validation'
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
@@ -75,17 +75,16 @@ const AuthLayout = (props) => {
                                 // value={formik.values.email}
                                 // { ...formik.getFieldProps('email')} 
                                 />
-                                { formik.touched.email && formik.errors.email? (
+                                {/* { formik.touched.email && formik.errors.email? (
                                     <div className='error'>{formik.errors.email}</div>
-                                ): null}
+                                ): null} */}
+                                <ErrorMessage name='email' />
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
                                 <Field type='password' id='password' name='password' required ref={pwInpRef}
                                 />
-                                { formik.touched.password && formik.errors.password? (
-                                    <div className='error'>{formik.errors.password}</div>
-                                ): null}
+                                <ErrorMessage name='password' />
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                                 <button type='button' 
