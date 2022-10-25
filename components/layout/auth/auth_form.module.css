@@ -61,13 +61,11 @@
     text-align: center;
     min-width: 120px;
 }
+
+/* form */
 .formContainer {
     height: 100%;
 }
-/* @media (min-width: 426px) and (max-width: 768px) {
-}
-@media (min-width: 769px) {
-} */
 .fieldContainer {
     margin: 0 auto;
     width: calc(100% - 26px);
@@ -88,6 +86,13 @@
     padding: 13px 15px;
     height: 55px;
 }
+/* form ends here*/
+
+/* form error */
+.error {
+    color: red;
+}
+/* form error ends here*/
 
 /* button */
 .spaBtns {

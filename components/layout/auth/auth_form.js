@@ -78,28 +78,32 @@ const AuthLayout = (props) => {
                                 /> */}
                                 <Field name='email' >
                                     { props => {
-                                        console.log(props)
+                                        // console.log(props)
                                         const {field, form, meta} = props
                                         return (
                                             <div>
                                                 <input type='email' id='email' {...field} />
                                                 { meta.touched && meta.error? <div>{meta.error}</div> : null }
                                             </div>
-                                        )
-                                    }
-
+                                        )}
                                     }
                                 </Field>
                                 {/* { formik.touched.email && formik.errors.email? (
                                     <div className='error'>{formik.errors.email}</div>
                                 ): null} */}
-                                <ErrorMessage name='email' />
+                                {/* <ErrorMessage name='email' component='div' /> */}
+                                <ErrorMessage name='email' >
+                                    { errMsg => {
+                                        return (<div className={classes.error}>{errMsg}</div>)
+                                        }
+                                    }
+                                </ErrorMessage>
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
                                 <Field type='password' id='password' name='password' required ref={pwInpRef}
                                 />
-                                <ErrorMessage name='password' />
+                                <ErrorMessage name='password' component='div' />
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                                 <button type='button' 
