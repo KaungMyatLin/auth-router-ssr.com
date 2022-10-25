@@ -69,12 +69,27 @@ const AuthLayout = (props) => {
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                                <Field type='email' id='email' name='email' required ref={emInpRef}
-                                // onChange={formik.handleChange}
-                                // onBlur={formik.handleBlur}
-                                // value={formik.values.email}
-                                // { ...formik.getFieldProps('email')} 
-                                />
+                                {/* <Field type='email' id='email' name='email' required 
+                                // // ref={emInpRef}
+                                // // onChange={formik.handleChange}
+                                // // onBlur={formik.handleBlur}
+                                // // value={formik.values.email}
+                                // // { ...formik.getFieldProps('email')} 
+                                /> */}
+                                <Field name='email' >
+                                    { props => {
+                                        console.log(props)
+                                        const {field, form, meta} = props
+                                        return (
+                                            <div>
+                                                <input type='email' id='email' {...field} />
+                                                { meta.touched && meta.error? <div>{meta.error}</div> : null }
+                                            </div>
+                                        )
+                                    }
+
+                                    }
+                                </Field>
                                 {/* { formik.touched.email && formik.errors.email? (
                                     <div className='error'>{formik.errors.email}</div>
                                 ): null} */}
