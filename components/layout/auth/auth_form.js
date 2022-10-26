@@ -4,6 +4,8 @@ import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Field, ErrorMessage } from 'formik'
 import { schemaValidation } from '@lib/shared/validation'
+import simpleErrMsg from '../../error/simpleErrMsg_w._hocPattern'
+
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
     const emInpRef = useRef()
@@ -67,7 +69,7 @@ const AuthLayout = (props) => {
                             </div>
                         </div>
                         <form className={classes.formContainer} >
-                            <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
+                            <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
                                 {/* <Field type='email' id='email' name='email' required 
                                 // // ref={emInpRef}
@@ -83,7 +85,7 @@ const AuthLayout = (props) => {
                                         return (
                                             <div>
                                                 <input type='email' id='email' {...field} />
-                                                { meta.touched && meta.error? <div>{meta.error}</div> : null }
+                                                {/* { meta.touched && meta.error? <div>{meta.error}</div> : null } */}
                                             </div>
                                         )}
                                     }
@@ -99,13 +101,13 @@ const AuthLayout = (props) => {
                                     }
                                 </ErrorMessage>
                             </div>
-                            <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer}`} >
+                            <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
                                 <Field type='password' id='password' name='password' required ref={pwInpRef}
                                 />
-                                <ErrorMessage name='password' component='div' />
+                                <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
                             </div>
-                            <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer}`} >
+                            <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
                                 <button type='button' 
                                 className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
                                 onClick={forgotEmHdl}>
@@ -114,9 +116,9 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.fieldContainer} ${classes.btnsSpaceBetween}`} >
                                 <button type='button' 
-                                className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`} 
-                                onClick={switchAuthModeHdl}> 
-                                    { isLogin? 'Create new account': 'Login with existing account' }
+                                    className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`} 
+                                    onClick={switchAuthModeHdl}> 
+                                        { isLogin? 'Create new account': 'Login with existing account' }
                                 </button>
                                 <button
                                 className={`${classes.formMainBtn} ${classes.allBtns}`} 

@@ -7,7 +7,7 @@
         display: flex;
         flex-direction: column;
         padding: 0 0;
-        height: 80%;
+        height: 95%;
     }
 }
 .boxContainer {
@@ -20,7 +20,7 @@
 @media (min-width: 426px) {
     .boxContainer {
         width: 448px;
-        height: 500px;
+        height: 564px;
         border-radius: 4px;
         border: 0.1px solid rgba(128, 128, 128, 0.595);
         padding: 40px;
@@ -69,6 +69,9 @@
 .fieldContainer {
     margin: 0 auto;
     width: calc(100% - 26px);
+}
+.fieldContainerThatHasErrorDiv {
+    height: 98px;
 }
 .fieldContainer label,
 .fieldContainer input {

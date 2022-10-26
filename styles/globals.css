@@ -40,3 +40,7 @@ a {
     background: black;
   }
 }
+
+.formSimpleErrMsgDiv {
+  color: red;
+}
