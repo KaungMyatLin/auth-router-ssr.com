@@ -1,7 +1,6 @@
 const simpleErrMsg = (el) => {
-    return props => {
-        console.log("props: ", props)
-        return <el name="errorMessageDiv" {...props} />
+    return ({childrenProp, classNameProp}) => {
+        return <el name="errorMessageDiv" {...childrenProp} {...classNameProp} />
     }
 }
 
