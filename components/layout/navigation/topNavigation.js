@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import classes from './topNavigation.module.css'
-const TopNavigation = () => {
+const TopNavigation = (props) => {
     const { status } = useSession();
+    console.log(props)
     return (
         <header className={classes.header}>
             <Link href='/' >

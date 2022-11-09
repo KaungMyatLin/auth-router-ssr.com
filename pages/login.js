@@ -3,9 +3,10 @@ import AuthLayout from '@cmpnt/layout/auth/auth_form'
 import { useRouter } from 'next/router';
 import { getSession } from 'next-auth/react';
 
-const login = () => {
+const login = (props) => {
     const [isLoading, setIsLoading ] = useState(true)
     const router = useRouter();
+    console.log(props)
 
     useEffect(() => {
         getSession().then(sessionObj => {
