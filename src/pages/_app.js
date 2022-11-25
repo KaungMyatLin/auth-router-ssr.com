@@ -1,15 +1,14 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
-import ThemeCtxWrapper from '@cmpnt/wrapper/themeCtxWrapper'
-import { ThemeContext } from '@cmpnt/ctx/themeCtx'
+import { ThemeProvider } from 'next-themes'
 
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return (
-      <ThemeCtxWrapper>
+    <ThemeProvider enableSystem={true} attribute="class">
         <SessionProvider session={session}>
               <Component {...pageProps} />
         </SessionProvider>
-      </ThemeCtxWrapper>
+    </ThemeProvider>
     )
 }
 export default MyApp

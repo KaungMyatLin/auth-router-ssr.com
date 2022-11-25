@@ -1,12 +1,34 @@
+// Not using atm.
 {
-    "compilerOptions": {
-        "module": "CommonJS",
-        "target": "ES5",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "outDir": "transpiles/"
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "transpiles/",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
