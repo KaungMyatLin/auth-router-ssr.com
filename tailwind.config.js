@@ -7,7 +7,7 @@
 //   plugins: [],
 // }
 
-mode.export = {
+module.export = {
   mode: 'jit',
   purge: [
     './src/pages/**/*.{js,ts,jsx,tsx}', 
