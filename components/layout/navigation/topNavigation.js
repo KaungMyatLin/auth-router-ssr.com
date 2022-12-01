@@ -2,11 +2,13 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import classes from './topNavigation.module.css'
 import { useContext } from 'react'
+import { MyThemeContext } from '@/store/theme/MyThemeContext.tsx'
+
 const TopNavigation = (props) => {
-    const {isDarkTheme, togThemeHdl} = useContext(MyThemeContext);
+    const { togThemeHdl } = useContext(MyThemeContext);
 
     const { status } = useSession();
-    console.log(props)
+    console.log(togThemeHdl)
     return (
         <header className={classes.header}>
             <Link href='/' >

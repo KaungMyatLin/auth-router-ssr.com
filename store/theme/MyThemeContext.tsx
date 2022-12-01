@@ -39,7 +39,7 @@ export function MyThemeContextProvider(props: ThemePropsInterface): ReactElement
     }
 
     return (
-        <MyThemeContext.Provider value={{isDarkTheme: true, togThemeHdl: ()=>{} }}>
+        <MyThemeContext.Provider value={{isDarkTheme: true, togThemeHdl: toggleThemeHdl }}>
             {props.children}
         </MyThemeContext.Provider>
     )
