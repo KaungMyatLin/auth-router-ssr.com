@@ -5,7 +5,7 @@
     "compile:scss": "sass --no-source-map components/layout/auth/auth_form.module.scss:components/layout/auth/compilemain.css --style expanded",
     "prefix:css": "postcss components/layout/auth/compilemain.css -u autoprefixer -b \"last 10 versions\" -o components/layout/auth/main.prefixed.css",
     "compress:css": "sass --no-source-map components/layout/auth/main.prefixed.css:components/layout/auth/main.min.css",
-    "build:cmpl:prfx:cmprs": "npm-run-all compile:scss prefix:css compress:css",
+    "build:cmpl:prfx:cmprs": "npm-run-all compile:scss prefix:css compress:css --watch",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
