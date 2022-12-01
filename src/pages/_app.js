@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
-import {MyThemeContext} from '@/store/theme/MyThemeContext.tsx'
+import MyThemeContext from '@/store/theme/'
 import { useContext } from 'react'
 
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {

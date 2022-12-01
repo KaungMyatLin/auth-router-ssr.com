@@ -1,4 +1,4 @@
-import classes from './auth_form.module.scss'
+import classes from './auth_form.module.css'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'

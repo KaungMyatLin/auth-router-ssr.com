@@ -4,11 +4,15 @@ import classes from './topNavigation.module.css'
 import { useContext } from 'react'
 import { MyThemeContext } from '@/store/theme/MyThemeContext.tsx'
 
-const TopNavigation = (props) => {
-    const { togThemeHdl } = useContext(MyThemeContext);
+const TopNavigation = () => {
+    const ctx = useContext(MyThemeContext);
+
+    const togThemeHdl = () => {
+        ctx.togThemeHdl()
+    }
 
     const { status } = useSession();
-    console.log(togThemeHdl)
+    console.dir(togThemeHdl)
     return (
         <header className={classes.header}>
             <Link href='/' >
