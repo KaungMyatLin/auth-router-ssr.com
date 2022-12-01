@@ -3,12 +3,13 @@
         "jsx": "react",
         "baseUrl": "."
         , "paths": {
-            "@/cmpnt/*": ["components/*"],
-            "@/lib/*": ["lib/*"],
-            "@/store/*": ["store/*"],
+            "@/cmpnt/*": ["/components/*"],
+            "@/lib/*": ["/lib/*"],
+            "@/store/*": ["/store/*"],
             "@/src/pages/*": ["/src/pages/*"],
             "@/src/api/*": ["/src/api/*"],
             "@/src/styles/*": ["/src/styles/*"],
+            "@/constants/*": ["/constants/*"],
         }
     }
 }
