@@ -1,4 +1,4 @@
-import DefaultSiteLayout from '@cmpnt/layout/navigation/default_sitelayout'
+import DefaultSiteLayout from '@/cmpnt/layout/navigation/default_sitelayout'
 
 export default function Home(props) {
   return (

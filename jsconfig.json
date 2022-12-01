@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
         "jsx": "react",
-        "baseUrl": "./"
+        "baseUrl": "."
         , "paths": {
-            "@cmpnt/*": ["components/*"]
-            , "@sty/*": ["styles/*"]
-            , "@lib/*": ["lib/*"]
+            "@/cmpnt/*": ["components/*"],
+            "@/lib/*": ["lib/*"],
+            "@/store/*": ["store/*"],
+            "@/src/pages/*": ["/src/pages/*"],
+            "@/src/api/*": ["/src/api/*"],
+            "@/src/styles/*": ["/src/styles/*"],
         }
     }
 }

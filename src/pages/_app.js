@@ -1,13 +1,14 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
+import MyThemeContext from '@/store/theme/'
 
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return (
-    <ThemeProvider enableSystem={true} attribute="class">
+    <MyThemeContext enableSystem={true} attribute="class">
         <SessionProvider session={session}>
               <Component {...pageProps} />
         </SessionProvider>
-    </ThemeProvider>
+    </MyThemeContext>
     )
 }
 export default MyApp

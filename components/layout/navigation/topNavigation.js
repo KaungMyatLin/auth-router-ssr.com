@@ -1,37 +1,11 @@
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import classes from './topNavigation.module.css'
-import { useTheme } from 'next-themes'
+import { useContext } from 'react'
 const TopNavigation = (props) => {
-    const { systemTheme, theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-      setMounted (true)
-    
-      return () => {
-        second
-      }
-    }, [third])
-    
+    const {isDarkTheme, togThemeHdl} = useContext(MyThemeContext);
 
     const { status } = useSession();
-    const renderThemeChanger = () => {
-        if (!mounted ) return null;
-        const currTheme = theme === 'system' ? systemTheme : theme;
-
-        if (currTheme === 'dark') {
-            return (
-                <SunIcon className="w-7 h-7" role="button" onClick={()=> setTheme('light')} />
-            )
-        }
-        else {
-            return (
-                <MoonIcon className="w-7 h-7" role="button" onClick={()=> setTheme('dark')} />
-            )
-        }
-    }
-
     console.log(props)
     return (
         <header className={classes.header}>
@@ -62,7 +36,7 @@ const TopNavigation = (props) => {
                             </li>
                         </>
                     }
-                    <renderThemeChanger/>
+                    <button type='button' onClick={togThemeHdl}>Toggle theme</button>
                 </ul>
             </nav>
         </header>

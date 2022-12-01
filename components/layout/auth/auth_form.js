@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Field, ErrorMessage } from 'formik'
-import { schemaValidation } from '@lib/shared/validation'
+import { schemaValidation } from '@/lib/shared/validation'
 import simpleErrMsg from '../../error/simpleErrMsg_w._hocPattern'
 
 const AuthLayout = (props) => {

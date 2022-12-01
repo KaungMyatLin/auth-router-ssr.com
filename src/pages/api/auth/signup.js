@@ -1,5 +1,5 @@
-import { c_hashPw } from "@lib/shared/auth";
-import getConnStrToMongoClient from "@lib/shared/db";
+import { c_hashPw } from "@/lib/shared/auth";
+import getConnStrToMongoClient from "@/lib/shared/db";
 
 async function signupHdl(req, res) {
     if (req.method === 'POST') {

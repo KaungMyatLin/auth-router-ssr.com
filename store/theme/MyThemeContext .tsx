@@ -1,6 +1,6 @@
-import { createContext, ReactElement, useEffect, useState } from "react";
+import React, { createContext, ReactElement, useEffect, useState } from "react";
 
-const MyThemeContext = createContext({
+export const MyThemeContext = createContext({
     isDarkTheme: true,
     togThemeHdl: () => {}
 })
@@ -22,7 +22,7 @@ export function MyThemeContextProvider(props: ThemePropsInterface): ReactElement
             const isDarkTheme: boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
             isDarkTheme && document!.querySelector("body")!.classList.add(`dark`)
 
-            setIsDarkTheme
+            setIsDarkTheme(!isDarkTheme)
         }
         else {
             localStorage.setItem("isDarkTheme", `false`)
@@ -31,8 +31,15 @@ export function MyThemeContextProvider(props: ThemePropsInterface): ReactElement
         }
     }
 
+    function toggleThemeHdl():void {
+        const isDarkMode: Boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
+        setIsDarkTheme(!isDarkMode)
+        document!.querySelector('body')!.classList.toggle('dark')
+        localStorage.setItem("isDarkTheme", `${!isDarkMode}`)
+    }
+
     return (
-        <MyThemeContext.Provider value={{isDarkTheme: true, togThemeHdl}}>
+        <MyThemeContext.Provider value={{isDarkTheme: true, togThemeHdl: ()=>{} }}>
             {props.children}
         </MyThemeContext.Provider>
     )
