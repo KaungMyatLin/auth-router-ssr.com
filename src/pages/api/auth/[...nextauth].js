@@ -12,6 +12,7 @@ export const authOptions = {
             name: "Credentials"
             , async authorize(credentials) {
                 const client = await getConnStrToMongoClient();
+                console.log(client)
                 const db = client.db()
                 const user = db.collection('users').findOne({email: credentials.email})
                 if (!user) {

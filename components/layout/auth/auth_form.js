@@ -16,9 +16,7 @@ const AuthLayout = (props) => {
         email: '',
         password: ''
     }
-    const onSubmitHdl = async(val) => {
-        const entEm = emInpRef.current.value
-        const entPw = pwInpRef.current.value
+    const onSubmitHdl = async(event) => {
 
         if (isLogin) {
             const result = await signIn('credentials', {
@@ -26,13 +24,17 @@ const AuthLayout = (props) => {
                 , email: entEm
                 , password: entPw
             })
-            if (!result.error) {
+            if (result.error) {
+                console.log(result.error)
+            }
+            else {
                 router.replace("/profile");
             }
         }
         else {
             try {
                 const result_cUser = await createUser(entEm, entPw)
+                console.log(result_cUser)
             }
             catch (err) {
                 console.log(err)
@@ -46,9 +48,9 @@ const AuthLayout = (props) => {
         setIsLogin(previousState => !previousState)
     }
     return (
-        <Formik 
-            initialValues={initialValues} 
-            validationSchema={schemaValidation} 
+        <Formik
+            initialValues={initialValues}
+            validationSchema={schemaValidation}
             onSubmit={onSubmitHdl}
             >
             <main className={classes.main}>
@@ -72,16 +74,15 @@ const AuthLayout = (props) => {
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                                {/* <Field type='email' id='email' name='email' required 
+                                {/* <Field type='email' id='email' name='email' required
                                 // // ref={emInpRef}
                                 // // onChange={formik.handleChange}
                                 // // onBlur={formik.handleBlur}
                                 // // value={formik.values.email}
-                                // // { ...formik.getFieldProps('email')} 
+                                // // { ...formik.getFieldProps('email')}
                                 /> */}
                                 <Field name='email'>
                                     { props => {
-                                        // console.log(props)
                                         const {field, form, meta} = props
                                         return (
                                             <div>
@@ -109,7 +110,7 @@ const AuthLayout = (props) => {
                                 <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
-                                <button type='button' 
+                                <button type='button'
                                     className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
                                     onClick={forgotEmHdl}
                                 >
@@ -117,14 +118,14 @@ const AuthLayout = (props) => {
                                 </button>
                             </div>
                             <div className={`${classes.fieldContainer} ${classes.btnsSpaceBetween}`} >
-                                <button type='button' 
-                                    className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`} 
+                                <button type='button'
+                                    className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`}
                                     onClick={switchAuthModeHdl}
-                                > 
+                                >
                                         { isLogin? 'Create new account': 'Login with existing account' }
                                 </button>
                                 <button
-                                className={`${classes.formMainBtn} ${classes.allBtns}`} 
+                                    className={`${classes.formMainBtn} ${classes.allBtns}`}
                                 >
                                     { isLogin?  'Login' : 'SignUp'}
                                 </button>
