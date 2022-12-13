@@ -11,6 +11,7 @@ async function signupHdl(req, res) {
         }
         const hashDigest = c_hashPw(c);
         const client = await getConnStrToMongoClient();
+        console.log(client)
         const db = client.db();
         const r_existingOrNot = await db.collection('users').findOne({email: em})
         if (r_existingOrNot) {

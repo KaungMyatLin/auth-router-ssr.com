@@ -1,10 +1,10 @@
 import React, { createContext, ReactElement, useEffect, useState } from "react";
 
 export const MyThemeContext = createContext({
-    isDarkTheme: true,
+    isDarkTheme: true,      // for intellisense.
     togThemeHdl: () => {}
 })
-
+//export const MytogThemeHdlContext = createContext({togThemeHdl})
 interface ThemePropsInterface {
     children?: JSX.Element | Array<JSX.Element>
 }
@@ -12,17 +12,16 @@ interface ThemePropsInterface {
 export function MyThemeContextProvider(props: ThemePropsInterface): ReactElement {
     const [isDarkTheme, setIsDarkTheme ] = useState(false);
 
-    useEffect(() => initialThemeHandler());
+    useEffect(() => initialThemeHandler(), []);
 
     function isLocalStorageNotEmpty(): boolean {
         return !!localStorage.getItem("isDarkTheme")
     }
     function initialThemeHandler(): void {
         if (isLocalStorageNotEmpty()) {
-            const isDarkTheme: boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
-            isDarkTheme && document!.querySelector("body")!.classList.add(`dark`)
-
-            setIsDarkTheme(!isDarkTheme)
+            const isLSDarkMode : boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
+            isLSDarkMode && document!.querySelector("body")!.classList.add(`dark`)
+            setIsDarkTheme(!isLSDarkMode)
         }
         else {
             localStorage.setItem("isDarkTheme", `false`)
@@ -32,10 +31,10 @@ export function MyThemeContextProvider(props: ThemePropsInterface): ReactElement
     }
 
     function toggleThemeHdl():void {
-        const isDarkMode: Boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
-        setIsDarkTheme(!isDarkMode)
+        const isLSDarkMode: Boolean = JSON.parse(localStorage.getItem("isDarkTheme"));
+        setIsDarkTheme(!isLSDarkMode)
         document!.querySelector('body')!.classList.toggle('dark')
-        localStorage.setItem("isDarkTheme", `${!isDarkMode}`)
+        localStorage.setItem("isDarkTheme", `${!isLSDarkMode}`)
     }
 
     return (

@@ -1,3 +1,3 @@
-import {MyThemeContext} from './MyThemeContext';
+import {MyThemeContextProvider} from './MyThemeContext';
 
-export default MyThemeContext;
+export default MyThemeContextProvider;

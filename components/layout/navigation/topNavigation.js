@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import classes from './topNavigation.module.css'
 import { useContext } from 'react'
-import { MyThemeContext } from '@/store/theme/MyThemeContext.tsx'
+import { MyThemeContext } from '@/store/theme/MyThemeContext'
+// import { MyThemeContext } from '@/store/theme/MyThemeContext.tsx'
 
 const TopNavigation = () => {
     const ctx = useContext(MyThemeContext);
@@ -12,7 +13,6 @@ const TopNavigation = () => {
     }
 
     const { status } = useSession();
-    console.dir(togThemeHdl)
     return (
         <header className={classes.header}>
             <Link href='/' >
