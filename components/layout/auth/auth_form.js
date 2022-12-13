@@ -1,5 +1,5 @@
 import classes from './auth_form.module.scss'
-// import './auth_form.module.scss'
+// import './auth_form.module.scss' cannot do this.
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -49,7 +49,7 @@ const AuthLayout = (props) => {
         <Formik 
             initialValues={initialValues} 
             validationSchema={schemaValidation} 
-            onSubmit={onSubmitHdl} 
+            onSubmit={onSubmitHdl}
             >
             <main className={classes.main}>
                 <section className={classes.section}>
@@ -79,7 +79,7 @@ const AuthLayout = (props) => {
                                 // // value={formik.values.email}
                                 // // { ...formik.getFieldProps('email')} 
                                 /> */}
-                                <Field name='email' >
+                                <Field name='email'>
                                     { props => {
                                         // console.log(props)
                                         const {field, form, meta} = props
@@ -110,15 +110,17 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
                                 <button type='button' 
-                                className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
-                                onClick={forgotEmHdl}>
+                                    className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
+                                    onClick={forgotEmHdl}
+                                >
                                     Forgot email?
                                 </button>
                             </div>
                             <div className={`${classes.fieldContainer} ${classes.btnsSpaceBetween}`} >
                                 <button type='button' 
                                     className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`} 
-                                    onClick={switchAuthModeHdl}> 
+                                    onClick={switchAuthModeHdl}
+                                > 
                                         { isLogin? 'Create new account': 'Login with existing account' }
                                 </button>
                                 <button
