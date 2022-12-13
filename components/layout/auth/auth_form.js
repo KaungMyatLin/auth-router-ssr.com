@@ -17,6 +17,9 @@ const AuthLayout = (props) => {
         password: ''
     }
     const onSubmitHdl = async(event) => {
+        // event.preventDefault();
+        const entEm = emInpRef.current.value
+        const entPw = pwInpRef.current.value
 
         if (isLogin) {
             const result = await signIn('credentials', {
