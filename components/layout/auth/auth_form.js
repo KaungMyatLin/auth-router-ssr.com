@@ -97,7 +97,7 @@ const AuthLayout = (props) => {
                                 // // value={formik.values.email}
                                 // // { ...formik.getFieldProps('email')}
                                 /> */}
-                                <Field name='email' >
+                                <Field name='email' required>
                                     { props => {
                                         const {field, form, meta} = props
                                         return (
@@ -121,7 +121,7 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                <Field type='password' id='password' name='password' 
+                                <Field type='password' id='password' name='password' required
                                 />
                                 <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
                             </div>
