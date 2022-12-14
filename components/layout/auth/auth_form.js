@@ -3,9 +3,10 @@ import classes from './auth_form.module.scss'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Formik, Field, ErrorMessage } from 'formik'
+import { Formik, Field, ErrorMessage, useFormik } from 'formik'
 import { schemaValidation } from '@/lib/shared/validation'
-import simpleErrMsg from '../../error/simpleErrMsg_w._hocPattern'
+import simpleErrMsg from '../ui/error/simpleErrMsg_w._hocPattern'
+import CustInp from '../ui/custInp'
 
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
@@ -15,6 +16,13 @@ const AuthLayout = (props) => {
     const initialValues= {
         email: '',
         password: ''
+    }
+    // const useF = useFormik({
+    //     initialValues: initialValues
+    // })
+    const validatePassword = (value) => {
+        console.log(value)
+        let err = {}
     }
     const onSubmitHdl = async(event) => {
         // event.preventDefault();
@@ -51,29 +59,34 @@ const AuthLayout = (props) => {
         setIsLogin(previousState => !previousState)
     }
     return (
-        <Formik
-            initialValues={initialValues}
-            validationSchema={schemaValidation}
-            onSubmit={onSubmitHdl}
-            >
-            <main className={classes.main}>
-                <section className={classes.section}>
-                    <div className={classes.boxContainer}>
-                        <div className={`${classes.centeringContainer} ${classes.sixteenpxSpacing}`}>
-                            <Link href='/' >
-                                <a>
-                                    <div className={classes.brand}>Amazing</div>
-                                </a>
-                            </Link>
+        <main className={classes.main}>
+            <section className={classes.section}>
+                <div className={classes.boxContainer}>
+                    <div className={`${classes.centeringContainer} ${classes.sixteenpxSpacing}`}>
+                        <Link href='/' >
+                            <a>
+                                <div className={classes.brand}>Amazing</div>
+                            </a>
+                        </Link>
+                    </div>
+                    <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
+                        <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
+                        { isLogin?  'Login' : 'SignUp'}
                         </div>
-                        <div className={` ${classes.centeringContainer} ${classes.sixteenpxSpacing} ${classes.titleContainer} `}>
-                            <div className={` ${classes.eightpxSpacing} ${classes.featureName} `}>
-                            { isLogin?  'Login' : 'SignUp'}
-                            </div>
-                            <div style={{fontSize: '1rem', color:'#ababab'}}>
-                            { isLogin?  'To continue to the shopping cart.' : ''}
-                            </div>
+                        <div style={{fontSize: '1rem', color:'#ababab'}}>
+                        { isLogin?  'To continue to the shopping cart.' : ''}
                         </div>
+                    </div>
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={schemaValidation}
+                        onSubmit={onSubmitHdl}
+                    >
+                    {formlevelValues => {
+                        console.log(formlevelValues)
+                        const {dirty, errors, getFieldHelpers, getFieldMeta, getFieldProps, 
+                            handleBlur, handleChange, handleReset, isValid, status, touched, validateField, validateForm } = formlevelValues;
+                        return (
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
@@ -84,7 +97,7 @@ const AuthLayout = (props) => {
                                 // // value={formik.values.email}
                                 // // { ...formik.getFieldProps('email')}
                                 /> */}
-                                <Field name='email'>
+                                <Field name='email' >
                                     { props => {
                                         const {field, form, meta} = props
                                         return (
@@ -108,36 +121,35 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                <Field type='password' id='password' name='password' required ref={pwInpRef}
+                                <Field type='password' id='password' name='password' 
                                 />
                                 <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
                                 <button type='button'
                                     className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
-                                    onClick={forgotEmHdl}
-                                >
+                                    onClick={forgotEmHdl} >
                                     Forgot email?
                                 </button>
                             </div>
                             <div className={`${classes.fieldContainer} ${classes.btnsSpaceBetween}`} >
                                 <button type='button'
                                     className={`${classes.auth_switchBtn} ${classes.spaBtns} ${classes.allBtns}`}
-                                    onClick={switchAuthModeHdl}
-                                >
+                                    onClick={switchAuthModeHdl} >
                                         { isLogin? 'Create new account': 'Login with existing account' }
                                 </button>
-                                <button
-                                    className={`${classes.formMainBtn} ${classes.allBtns}`}
+                                <button type="submit" disabled={!isValid}
+                                    className={`${classes.formMainBtn} ${classes.allBtns} ${!isValid?classes.disabled:''}`}
                                 >
                                     { isLogin?  'Login' : 'SignUp'}
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </section>
-            </main>
-        </Formik>
+                    )}}
+                    </Formik>
+                </div>
+            </section>
+        </main>
     )
 }
 export default AuthLayout
