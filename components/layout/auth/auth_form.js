@@ -121,7 +121,7 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                <Field type='password' id='password' name='password' required
+                                <Field type='password' id='password' name='password' required component={CustInp}
                                 />
                                 <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
                             </div>
