@@ -2,7 +2,7 @@ import { forwardRef, useRef, useImperativeHandle, useEffect } from "react"
 
 
 const CustInp = forwardRef((props, ref) => {
-    const inpRef = useRef()
+    // const inpRef = useRef()
     // const focusInp= () => {
     //     inpRef.current.focus()
     // }
@@ -14,8 +14,10 @@ const CustInp = forwardRef((props, ref) => {
     //         focus: focusInp
     //     }
     // })
+    const { type, id, required, field, form, children} = props;
     return (
-        <input ref={inpRef} {...props}>{props.children}</input>
+        <input ref={ref} 
+        >{children}</input>
     )
 })
 

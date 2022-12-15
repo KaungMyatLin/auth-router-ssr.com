@@ -5,8 +5,7 @@ import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Formik, Field, ErrorMessage, useFormik } from 'formik'
 import { schemaValidation } from '@/lib/shared/validation'
-import simpleErrMsg from '../ui/error/simpleErrMsg_w._hocPattern'
-import CustInp from '../ui/custInp'
+import CustInpFields from '../ui/custInp'
 
 const AuthLayout = (props) => {
     const [isLogin, setIsLogin] = useState(props.authType)
@@ -22,13 +21,14 @@ const AuthLayout = (props) => {
     // })
     const validatePassword = (value) => {
         console.log(value)
-        let err = {}
     }
-    const onSubmitHdl = async(event) => {
-        // event.preventDefault();
-        const entEm = emInpRef.current.value
-        const entPw = pwInpRef.current.value
-
+    const onSubmitHdl = async(e) => {
+        e.preventDefault();
+        const entEm = emInpRef.current.value()
+        const entPw = pwInpRef.current.value()
+        console.log(entEm)
+        console.log(entPw)
+        debugger;
         if (isLogin) {
             const result = await signIn('credentials', {
                 redirect: false
@@ -83,28 +83,18 @@ const AuthLayout = (props) => {
                         onSubmit={onSubmitHdl}
                     >
                     {formlevelValues => {
-                        console.log(formlevelValues)
                         const {dirty, errors, getFieldHelpers, getFieldMeta, getFieldProps, 
                             handleBlur, handleChange, handleReset, isValid, status, touched, validateField, validateForm } = formlevelValues;
+                        console.log(isValid)
                         return (
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                                {/* <Field type='email' id='email' name='email' required
-                                // // ref={emInpRef}
-                                // // onChange={formik.handleChange}
-                                // // onBlur={formik.handleBlur}
-                                // // value={formik.values.email}
-                                // // { ...formik.getFieldProps('email')}
-                                /> */}
-                                <Field name='email' required>
+                                <Field name='email'>
                                     { props => {
                                         const {field, form, meta} = props
                                         return (
-                                            <div>
-                                                <input type='email' id='email' {...field} />
-                                                {/* { meta.touched && meta.error? <div>{meta.error}</div> : null } */}
-                                            </div>
+                                            <input type='email' {...field} required ref={emInpRef}/>
                                         )}
                                     }
                                 </Field>
@@ -114,6 +104,7 @@ const AuthLayout = (props) => {
                                 {/* <ErrorMessage name='email' component='div' /> */}
                                 <ErrorMessage name='email' >
                                     { errMsg => {
+                                        console.log(errMsg)
                                         return (<div className={classes.error}>{errMsg}</div>)
                                         }
                                     }
@@ -121,13 +112,25 @@ const AuthLayout = (props) => {
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                <Field type='password' id='password' name='password' required component={CustInp}
-                                />
-                                <ErrorMessage name='password' component={simpleErrMsg} className='formSimpleErrMsgDiv'/>
+                                {/* <Field name="password">
+                                { props => {
+                                    const {field, form, meta} = props
+                                    return (
+                                        <input type='text' {...field} required ref={pwInpRef}/>
+                                    )}
+                                }
+                                </Field> */}
+                                <Field name='password' type='password' id='password' required ref={pwInpRef} component={CustInpFields} />
+                                <ErrorMessage name='password' >
+                                    { errMsg => {
+                                        return (<div className={classes.error}>{errMsg}</div>)
+                                        }
+                                    }
+                                </ErrorMessage>
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
                                 <button type='button'
-                                    className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`} 
+                                    className={`${classes.forgotPwBtn} ${classes.spaBtns} ${classes.allBtns} ${classes.thirtysevenpxSpacing}`}
                                     onClick={forgotEmHdl} >
                                     Forgot email?
                                 </button>
@@ -138,7 +141,7 @@ const AuthLayout = (props) => {
                                     onClick={switchAuthModeHdl} >
                                         { isLogin? 'Create new account': 'Login with existing account' }
                                 </button>
-                                <button type="submit" disabled={!isValid}
+                                <button disabled={!isValid}
                                     className={`${classes.formMainBtn} ${classes.allBtns} ${!isValid?classes.disabled:''}`}
                                 >
                                     { isLogin?  'Login' : 'SignUp'}
