@@ -85,48 +85,29 @@ const AuthLayout = (props) => {
                     {formlevelValues => {
                         const {dirty, errors, getFieldHelpers, getFieldMeta, getFieldProps, 
                             handleBlur, handleChange, handleReset, isValid, status, touched, validateField, validateForm } = formlevelValues;
-                        console.log(isValid)
+
                         return (
                         <form className={classes.formContainer} >
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='email' className={`${classes.eightpxSpacing}`}>Your Email</label>
-                                <Field name='email'>
-                                    { props => {
-                                        const {field, form, meta} = props
-                                        return (
-                                            <input type='email' {...field} required ref={emInpRef}/>
-                                        )}
-                                    }
-                                </Field>
+                                <Field name='email' required />
                                 {/* { formik.touched.email && formik.errors.email? (
                                     <div className='error'>{formik.errors.email}</div>
                                 ): null} */}
                                 {/* <ErrorMessage name='email' component='div' /> */}
-                                <ErrorMessage name='email' >
-                                    { errMsg => {
-                                        console.log(errMsg)
-                                        return (<div className={classes.error}>{errMsg}</div>)
-                                        }
-                                    }
-                                </ErrorMessage>
+                                <ErrorMessage name='email' className={classes.error} component='div'/>
                             </div>
                             <div className={`${classes.sixteenpxSpacing}  ${classes.fieldContainer} ${classes.fieldContainerThatHasErrorDiv} `} >
                                 <label htmlFor='password' className={`${classes.eightpxSpacing}`}>Your Password</label>
-                                {/* <Field name="password">
-                                { props => {
-                                    const {field, form, meta} = props
-                                    return (
-                                        <input type='text' {...field} required ref={pwInpRef}/>
-                                    )}
-                                }
-                                </Field> */}
-                                <Field name='password' type='password' id='password' required ref={pwInpRef} component={CustInpFields} />
-                                <ErrorMessage name='password' >
-                                    { errMsg => {
-                                        return (<div className={classes.error}>{errMsg}</div>)
-                                        }
-                                    }
-                                </ErrorMessage>
+                                <Field name='password'>
+                                    { props => {
+                                        const {field, form, meta} = props
+                                        return (
+                                            <CustInpFields {...field}  required />
+                                        )
+                                    }}
+                                </Field>
+                                <ErrorMessage name='password' className={classes.error} component='div' />
                             </div>
                             <div className={`${classes.sixteenpxSpacing} ${classes.fieldContainer} `} >
                                 <button type='button'

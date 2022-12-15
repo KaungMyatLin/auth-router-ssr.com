@@ -14,9 +14,11 @@ const CustInp = forwardRef((props, ref) => {
     //         focus: focusInp
     //     }
     // })
+    console.log(props)
+    console.log(ref)
     const { type, id, required, field, form, children} = props;
     return (
-        <input ref={ref} 
+        <input ref={ref} {...props}
         >{children}</input>
     )
 })
